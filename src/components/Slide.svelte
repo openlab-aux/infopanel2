@@ -35,6 +35,7 @@
       {#if image !== undefined}
         <div id="imagecontainer">
           <img
+            id="image"
             src={image}
             alt="Slide image"
           />
@@ -73,6 +74,7 @@
   }
 
   #imagecontainer {
+    display: flex;
     justify-content: center;
     align-items: center;
   }
@@ -80,6 +82,10 @@
   .slideWithImage {
     display: grid;
     grid-template-columns: 1fr 2fr;
+  }
+
+  #image {
+    max-width: 500px;
   }
 
   #contentcontainer {
