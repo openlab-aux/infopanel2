@@ -1,18 +1,18 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig, envField } from "astro/config";
 
-import svelte from '@astrojs/svelte';
+import svelte from "@astrojs/svelte";
 
-import node from '@astrojs/node';
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte()],
 
-  output: 'server',
+  output: "server",
 
   adapter: node({
-    mode: 'standalone'
+    mode: "standalone",
   }),
 
   env: {
@@ -26,7 +26,7 @@ export default defineConfig({
         context: "server",
         access: "secret",
         optional: false,
-      })
-    }
-  }
+      }),
+    },
+  },
 });
