@@ -2,11 +2,15 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition"
 
-  const { title, content, visible, onVisible, onInvisible, image}: {
+  import QRCode from "./QRCode.svelte"
+
+  const { title, content, visible, onVisible, onInvisible, image, qrCodeUrl, qrCodeCallToAction}: {
     title: string, 
     content: string,
     visible: boolean,
     image: string | undefined,
+    qrCodeUrl: string | undefined,
+    qrCodeCallToAction: string | undefined,
     onVisible?: () => void,
     onInvisible?: () => void
   } = $props()
@@ -40,6 +44,15 @@
         <h1>{title}</h1>
 
         {@html content}
+
+        {#if qrCodeUrl !== undefined}
+        <div id="qrcode">
+          <QRCode
+            callToAction={qrCodeCallToAction}
+            url={qrCodeUrl}
+          />
+        </div>
+        {/if}
       </div>
     </div>
  {/if}
@@ -48,6 +61,11 @@
 <style>
   .slide {
     font-size: 125%;
+    height: 100%;
+  }
+
+  #slide {
+    height: 100%;
   }
 
   h1 {
@@ -63,4 +81,17 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
   }
+
+  #contentcontainer {
+    position: relative;
+    height: 100%;
+  }
+
+  #qrcode {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+  }
+
 </style>

@@ -22,27 +22,27 @@
 </script>
 
 
-<div id="slideshow">
-  {#if slides.length == 0}
-    loading content...
-  {:else}
-    <SlideComponent
-      visible={visible}
-      content={slides[currentSlide].content}
-      title={slides[currentSlide].title}
-      image={slides[currentSlide].image}
-      onVisible={() => {
-        setTimeout(() => { visible = false}, slides[currentSlide].duration * 1000)
-      }}
-      onInvisible={async () => {
-        currentSlide = (currentSlide + 1) % slides.length
+{#if slides.length == 0}
+  loading content...
+{:else}
+  <SlideComponent
+    visible={visible}
+    content={slides[currentSlide].content}
+    title={slides[currentSlide].title}
+    image={slides[currentSlide].image}
+    qrCodeUrl={slides[currentSlide].qrCodeUrl}
+    qrCodeCallToAction={slides[currentSlide].qrCodeCallToAction}
+    onVisible={() => {
+      setTimeout(() => { visible = false}, slides[currentSlide].duration * 1000)
+    }}
+    onInvisible={async () => {
+      currentSlide = (currentSlide + 1) % slides.length
 
-        if(currentSlide == 0) {
-          await reloadContent()
-        }
+      if(currentSlide == 0) {
+        await reloadContent()
+      }
 
-        setTimeout(() => { visible = true }, 50)
-      }}
-    />
-  {/if}
-</div>
+      setTimeout(() => { visible = true }, 50)
+    }}
+  />
+{/if}

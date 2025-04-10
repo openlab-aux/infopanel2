@@ -45,6 +45,8 @@ export default async function getSlides(options: {
             ? `${DIRECTUS_URL}/assets/${item.image}`
             : undefined,
           duration: item.Duration,
+          qrCodeUrl: item.qrCodeUrl ? item.qrCodeUrl : undefined,
+          qrCodeCallToAction: item.qrCodeCallToAction ? item.qrCodeCallToAction : undefined
         } as Slide;
       });
     });
