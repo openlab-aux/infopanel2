@@ -1,0 +1,42 @@
+---
+import Fullscreen from "../../layouts/Fullscreen.astro"
+import PanelMode from "../../layouts/PanelMode.astro"
+import SlideComponent from "../../components/Slide.svelte"
+import { directusClient } from "../../util/directus"
+import { readItems } from "@directus/sdk"
+import type { Slide } from "../../types/slide"
+import markdownIt from "markdown-it"
+import getSlides from "../../util/getSlides"
+
+export const prerender = false
+
+const { slide } = Astro.params
+
+const md = markdownIt({
+  html: true,
+  breaks: true,
+  linkify: true
+})
+
+const allSlides = await getSlides({})
+const slideData = allSlides.findLast((s) => {
+  return s.id == slide
+})
+
+if (!slideData) {
+  throw new Error(`Slide with id ${slide} not found`)
+}
+
+---
+
+<Fullscreen>
+  <PanelMode>
+    <SlideComponent
+      client:load
+      visible={true}
+      title={slideData.title}
+      content={slideData.content}
+      image={slideData.image}
+    />
+  </PanelMode>
+</Fullscreen>

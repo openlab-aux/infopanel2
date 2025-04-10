@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <title>blah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+@media(prefers-color-scheme: light) {
+  body {
+    background-color: lightgray;
+    color: darkslategrey;
+  }
+
+  a {
+    color: darkslateblue;
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+    color: lightgray;
+    background-color: darkslategrey;
+  }
+
+  a {
+    color: lightblue;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+html {
+  height: 100%;
+  width: 100%;
+  display: grid;
+}
+
+body {
+  font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+#content {
+  top: 12pt;
+  left: 12pt;
+}
+</style>

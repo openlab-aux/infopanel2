@@ -1,0 +1,45 @@
+---
+import DDate from '../components/DDate.svelte';
+---
+
+<div id="content">
+  <slot />
+</div>
+
+<div id="footer">
+  <div id="imprint">
+    OpenLab Augsburg e.V.
+  </div>
+  <div id="date">
+    <DDate />
+  </div>
+</div>
+
+<style>
+#content {
+  font-size: 200%;
+  margin-left: 12pt;
+  margin-right: 12pt;
+  /* background-color: blue; */
+}
+
+#footer {
+  font-size: 200%;
+  display: grid;
+  top: 50pt;
+  margin-left: 12pt;
+  margin-right: 12pt;
+  margin-bottom: 5pt;
+  grid-template-columns: 50% 50%;
+}
+
+#imprint {
+  text-align: left;
+  /* background-color: red; */
+}
+
+#date {
+  text-align: right;
+  /* background-color: green; */
+}
+</style>
